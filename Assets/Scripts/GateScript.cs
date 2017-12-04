@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GateScript : MonoBehaviour {
 
+	
+
 	Animator anim;
 
 	// Use this for initialization

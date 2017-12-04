@@ -792,6 +792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e95728f653496447847a7051636b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gateTrig:
+  - {fileID: 961006665}
 --- !u!95 &931550826
 Animator:
   serializedVersion: 3
@@ -908,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gate: {fileID: 178973511}
+  ignoreTrigger: 1
 --- !u!61 &961006666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -931,7 +934,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &976865307
 GameObject:
@@ -1041,11 +1044,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.24
+      value: -6.29
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.35
+      value: -1.86
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 2}
       propertyPath: m_LocalPosition.z
