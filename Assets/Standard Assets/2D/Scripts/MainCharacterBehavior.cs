@@ -12,6 +12,7 @@ public class MainCharacterBehavior : MonoBehaviour {
     public float groundRadius = 0.2f;
     public bool grounded = false;
     public LayerMask whatIsGround;
+    bool Levelcomplete;
 
     private float gravity;
 
@@ -19,14 +20,28 @@ public class MainCharacterBehavior : MonoBehaviour {
 
     void Start()
     {
-       
+        Levelcomplete = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMove();
+
+        
     }
+
+    /*void OnTriggerEnter2D(Collider2D other)
+    {
+
+        //Checks if other gameobject has a Tag of Player
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerController>().alive = false;
+            Time.timeScale = 0;
+        }
+    }*/
+
 
     void FixedUpdate()
     {
