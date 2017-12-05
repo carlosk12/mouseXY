@@ -12,6 +12,8 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         //winText = GetComponent<UnityEngine.UI.Text>();
+
+        //winText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
