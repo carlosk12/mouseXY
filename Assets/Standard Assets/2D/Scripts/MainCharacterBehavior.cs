@@ -7,7 +7,7 @@ public class MainCharacterBehavior : MonoBehaviour {
     public int playerSpeed = 10;
     public bool facingRight = true;
 
-    public int playerJumpPower = 1250;
+    public int playerJumpPower = 12;
     public float moveX;
     public float groundRadius = 0.2f;
     public bool grounded = false;

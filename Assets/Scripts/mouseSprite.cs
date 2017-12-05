@@ -53,21 +53,21 @@ public class mouseSprite : MonoBehaviour {
         //    renderer.sprite = sprites[3];
         //}
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            renderer.sprite = sprites[2];
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            renderer.sprite = sprites[0];
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            renderer.sprite = sprites[1];
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            renderer.sprite = sprites[3];
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    renderer.sprite = sprites[2];
+        //}
+        //else if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    renderer.sprite = sprites[0];
+        //}
+        //else if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    renderer.sprite = sprites[1];
+        //}
+        //else if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    renderer.sprite = sprites[3];
+        //}
     }
 }
