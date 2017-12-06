@@ -28,6 +28,6 @@ public class GateScript : MonoBehaviour {
 	public void CloseGate()
 	{
 		anim.SetBool("Open", false);
-		Debug.Log("dsadas");
+		//Debug.Log("dsadas");
 	}
 }
