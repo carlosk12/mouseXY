@@ -6,6 +6,11 @@ TagManager:
   tags:
   - leftRight
   - upDown
+  - Top
+  - Bottom
+  - Left
+  - Right
+  - Canvas
   layers:
   - Default
   - TransparentFX

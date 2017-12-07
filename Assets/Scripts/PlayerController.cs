@@ -28,13 +28,14 @@ public class PlayerController : MonoBehaviour {
     
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(false);
+        transform.GetChild(4).gameObject.SetActive(true);
         transform.GetChild(5).gameObject.SetActive(false);
         transform.GetChild(6).gameObject.SetActive(false);
     }
 	
     void Update()
     {
-        //Debug.Log(inAir);
     }
 
     void FixedUpdate ()
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour {
             PlayerMoveLR();
         }
 
-        if(Input.GetKeyUp(KeyCode.Space) && !inAir)
+        if(Input.GetKeyDown(KeyCode.Space) && !inAir)
         {
             Jump();
         }
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour {
             transform.GetChild(3).gameObject.SetActive(false);
             transform.GetChild(4).gameObject.SetActive(false);
             transform.GetChild(5).gameObject.SetActive(true);
-            transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(6).gameObject.SetActive(false);
 
             isUpOrDown = false;
             normal = Vector2.right;
@@ -77,7 +78,6 @@ public class PlayerController : MonoBehaviour {
             {
                 flipPlayerX();
             }
-            //rb2d.MoveRotation(-90);
         }
         else if(Input.GetKeyDown(KeyCode.S))
         {
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
 
-            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(false);
             transform.GetChild(4).gameObject.SetActive(true);
             transform.GetChild(5).gameObject.SetActive(false);
             transform.GetChild(6).gameObject.SetActive(false);
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour {
             transform.GetChild(2).gameObject.SetActive(true);
 
             transform.GetChild(3).gameObject.SetActive(true);
-            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(false);
             transform.GetChild(5).gameObject.SetActive(false);
             transform.GetChild(6).gameObject.SetActive(false);
             normal = Vector2.down;
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 
             transform.GetChild(3).gameObject.SetActive(false);
             transform.GetChild(4).gameObject.SetActive(false);
-            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(false);
             transform.GetChild(6).gameObject.SetActive(true);
             normal = Vector2.left;
             isUpOrDown = false;
@@ -137,8 +137,6 @@ public class PlayerController : MonoBehaviour {
 
     void Jump()
     {
-        Debug.Log("Jump");
-        inAir = true;
         rb2d.AddForce(-(Physics2D.gravity) * 30);
     }
 
@@ -156,7 +154,19 @@ public class PlayerController : MonoBehaviour {
             flipPlayerX();
         }
 
-        rb2d.velocity = new Vector2(moveHor * speed, rb2d.velocity.y);
+        if (inAir)
+        {
+            speed = 6;
+            if (rb2d.velocity.x >= -4.5f && rb2d.velocity.x <= 4.5f)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x + moveHor * speed * Time.deltaTime, rb2d.velocity.y);
+            }
+        }
+        else
+        {
+            speed = 250;
+            rb2d.velocity = new Vector2(moveHor * speed * Time.deltaTime, rb2d.velocity.y);
+        }
     }
 
     void PlayerMoveLR()
@@ -173,17 +183,26 @@ public class PlayerController : MonoBehaviour {
             flipPlayerY();
         }
 
-        rb2d.velocity = new Vector2(rb2d.velocity.x, moveVer * speed);
-        //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveVer * speed, moveHor * speed);
+        if (inAir)
+        {
+            speed = 6;
+            if(rb2d.velocity.y >= -4.5f && rb2d.velocity.y <= 4.5f)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y + moveVer * speed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            speed = 250;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, moveVer * speed * Time.deltaTime);
+        }
+
     }
 
     void flipPlayerX()
     {
-        //transform.Find("mouseSprite").flipPlayer();
-        //.GetComponent<mouseSprite>().flipPlayer();
         GetComponentInChildren<mouseSprite>().flipPlayerX();
-
-        //transform.Find("mouseSprite").GetComponents<mouseSprite>().flipPlayer();
+        
         facingRight = !facingRight;
     }
 
@@ -196,112 +215,21 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        //if (col.gameObject.name == "CratePink" && col.gameObject.GetComponent<CrateController>().isCrateInAir())
-        //{
-        //    col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        //}
 
-        if (normal == Vector2.up)
-        {
-            Debug.Log("Collision object:" + col.gameObject.name + ", normal: " + col.contacts[0].normal.ToString("#.000") + ", lenght: " + col.contacts.Length);
-
-            foreach (ContactPoint2D cl in col.contacts)
-            {
-                if(cl.normal.Equals(Vector2.up))
-                {
-                    inAir = false;
-                }
-            }
-
-            Debug.Log("inAir: " + inAir);
-            //if (col.contacts[0].normal == Vector2.up)
-            //{
-            //    inAir = false;
-            //}
-            //if (col.gameObject.transform.position.y < gameObject.transform.position.y)
-            //{
-            //    inAir = false;
-            //}
-        }
-        else if (normal == Vector2.down)
-        {
-            if (col.contacts[0].normal == Vector2.down)
-            {
-                inAir = false;
-            }
-            //if (col.gameObject.transform.position.y > gameObject.transform.position.y)
-            //{
-            //    inAir = false;
-            //}
-        }
-        else if (normal == Vector2.left)
-        {
-            if (col.contacts[0].normal == Vector2.left)
-            {
-                inAir = false;
-            }
-            //if (col.gameObject.transform.position.x > gameObject.transform.position.x)
-            //{
-            //    inAir = false;
-            //}
-        }
-        else if (normal == Vector2.right)
-        {
-            if (col.contacts[0].normal == Vector2.right)
-            {
-                inAir = false;
-            }
-            //if (col.gameObject.transform.position.x < gameObject.transform.position.x)
-            //{
-            //    inAir = false;
-            //}
-        }
-
-        //if (col.gameObject.transform.position.y < gameObject.transform.position.y)
-        //{
-        //    inAir = false;
-        //}
     }
 
     void OnCollisionExit2D(Collision2D col)
     {
-        //if (col.gameObject.name == "CratePink")
-        //{
-        //    col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        //}
 
-        //if (normal == Vector2.up)
-        //{
-        //    if (col.gameObject.transform.position.y > gameObject.transform.position.y)
-        //    {
-        //        inAir = true;
-        //    }
-        //}
-        //else if (normal == Vector2.down)
-        //{
-        //    if (col.gameObject.transform.position.y < gameObject.transform.position.y)
-        //    {
-        //        inAir = true;
-        //    }
-        //}
-        //else if (normal == Vector2.left)
-        //{
-        //    if (col.gameObject.transform.position.x < gameObject.transform.position.x)
-        //    {
-        //        inAir = true;
-        //    }
-        //}
-        //else if (normal == Vector2.right)
-        //{
-        //    if (col.gameObject.transform.position.x > gameObject.transform.position.x)
-        //    {
-        //        inAir = true;
-        //    }
-        //}
+    }
 
-        //if (!(col.gameObject.name == "CratePink"))
-        //{
-        //inAir = true;
-        //}
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        inAir = false;
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        inAir = true;
     }
 }
