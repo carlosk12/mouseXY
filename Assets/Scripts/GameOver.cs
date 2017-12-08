@@ -32,7 +32,7 @@ public class GameOver : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Debug.Log("debug");
-            //GameController.i.GetNextLevel();
+            GameController.i.GetNextLevel();
             winText.gameObject.SetActive(true);
         }
     }
