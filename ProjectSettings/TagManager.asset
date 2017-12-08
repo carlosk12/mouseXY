@@ -6,6 +6,10 @@ TagManager:
   tags:
   - leftRight
   - upDown
+  - Surroundings
+  - Gate
+  - Killer
+  - TheBox
   layers:
   - Default
   - TransparentFX
