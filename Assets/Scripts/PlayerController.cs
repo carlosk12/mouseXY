@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     private CrateController bla;
     private bool facingRight = false;
     private bool facingUp = false;
-
+    private int counter = 0;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -225,11 +225,18 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        counter++;
+
         inAir = false;
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        inAir = true;
+        counter--;
+
+        if(counter == 0)
+        {
+            inAir = true;
+        }
     }
 }
