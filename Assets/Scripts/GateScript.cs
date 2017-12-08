@@ -45,6 +45,8 @@ public class GateScript : MonoBehaviour {
                 }
             }
         }
-		
+
+		anim.SetBool("Open", false);
+		//Debug.Log("dsadas");
 	}
 }

@@ -36,11 +36,13 @@ public class Button : MonoBehaviour {
 	// visual indicator to show witch gates the button is connected to
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.red;
+		Gizmos.color = Color.cyan;
 
 		foreach (GateTrigger i in gateTrig) {
 			Gizmos.DrawLine(transform.position, i.transform.position);
 		}
 	}
+
+	
 
 }

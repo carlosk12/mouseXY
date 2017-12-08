@@ -9,23 +9,34 @@ public class PlayerController : MonoBehaviour {
     private GameObject upDownColBox;
     private GameObject leftRightColBox;
     private bool isUpOrDown = true;
-    //private bool inAir = false;
-
+    private bool inAir = false;
+    private Vector2 normal;
+    private CrateController bla;
+    private bool facingRight = false;
+    private bool facingUp = false;
+    private int counter = 0;
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-
-	// Use this for initialization
+    
 	void Start () {
 
-        Physics2D.gravity = new Vector3(0, -9.81F, 0);
+        Physics2D.gravity = new Vector2(0, -9.81f);
+
+        normal = Vector2.up;
     
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(false);
+        transform.GetChild(4).gameObject.SetActive(true);
+        transform.GetChild(5).gameObject.SetActive(false);
+        transform.GetChild(6).gameObject.SetActive(false);
     }
 	
-    void Update() { }
+    void Update()
+    {
+    }
 
     void FixedUpdate ()
     {
@@ -38,83 +49,95 @@ public class PlayerController : MonoBehaviour {
             PlayerMoveLR();
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && !inAir)
         {
-            //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
-            rb2d.velocity = new Vector2(0, 5);
-            //inAir = true;
+            Jump();
         }
         
-        //Vector2 movement = new Vector2(speed, 0);
-
-        //rb2d.AddForce(movement);
-        //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHor * speed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
-
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        //{
-        //    //rb2d.AddForce(new Vector2(speed, 0));
-        //    gameObject.GetComponent<Rigidbody2D>().velocity = -movement;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.RightArrow))
-        //{
-        //    //rb2d.AddForce(new Vector2(speed, 0));
-        //    gameObject.GetComponent<Rigidbody2D>().velocity = movement;
-        //}
-
+        /**
+         * A = Gravity pulls you towards the left
+         * S = Gravity pulls you towards the bottom
+         * W = Gravity pulls you towards the top
+         * D = Gravity pulls you towards the right
+         * */
         if (Input.GetKeyDown(KeyCode.A))
         {
-            print("A");
-            Physics2D.gravity = new Vector3(-9.81F, 0, 0);
+            Physics2D.gravity = new Vector2(-9.81F, 0);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(false);
+
+            transform.GetChild(3).gameObject.SetActive(false);
+            transform.GetChild(4).gameObject.SetActive(false);
+            transform.GetChild(5).gameObject.SetActive(true);
+            transform.GetChild(6).gameObject.SetActive(false);
+
             isUpOrDown = false;
-            //rb2d.MoveRotation(-90);
+            normal = Vector2.right;
+
+            if(facingRight)
+            {
+                flipPlayerX();
+            }
         }
         else if(Input.GetKeyDown(KeyCode.S))
         {
-            print("S");
-            Physics2D.gravity = new Vector3(0, -9.81F, 0);
+            Physics2D.gravity = new Vector2(0, -9.81F);
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
+
+            transform.GetChild(3).gameObject.SetActive(false);
+            transform.GetChild(4).gameObject.SetActive(true);
+            transform.GetChild(5).gameObject.SetActive(false);
+            transform.GetChild(6).gameObject.SetActive(false);
+            normal = Vector2.up;
             isUpOrDown = true;
+
+            if (facingUp)
+            {
+                flipPlayerY();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            print("W");
-            Physics2D.gravity = new Vector3(0, 9.81F, 0);
+            Physics2D.gravity = new Vector2(0, 9.81F);
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
+
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(false);
+            transform.GetChild(5).gameObject.SetActive(false);
+            transform.GetChild(6).gameObject.SetActive(false);
+            normal = Vector2.down;
             isUpOrDown = true;
+
+            if(facingUp)
+            {
+                flipPlayerY();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            print("D");
-            Physics2D.gravity = new Vector3(9.81F, 0, 0);
+            Physics2D.gravity = new Vector2(9.81F, 0);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(false);
-            isUpOrDown = false;
-        }
 
-        //if (Input.GetKeyUp(KeyCode.LeftArrow))
-        //{
-        //    rb2d.velocity = Vector2.zero;
-        //    rb2d.angularVelocity = 0;
-        //}
-        //else if (Input.GetKeyUp(KeyCode.DownArrow))
-        //{
-        //    rb2d.velocity = Vector2.zero;
-        //    rb2d.angularVelocity = 0;
-        //}
-        //else if (Input.GetKeyUp(KeyCode.UpArrow))
-        //{
-        //    rb2d.velocity = Vector2.zero;
-        //    rb2d.angularVelocity = 0;
-        //}
-        //else if (Input.GetKeyUp(KeyCode.RightArrow))
-        //{
-        //    rb2d.velocity = Vector2.zero;
-        //    rb2d.angularVelocity = 0;
-        //}
+            transform.GetChild(3).gameObject.SetActive(false);
+            transform.GetChild(4).gameObject.SetActive(false);
+            transform.GetChild(5).gameObject.SetActive(false);
+            transform.GetChild(6).gameObject.SetActive(true);
+            normal = Vector2.left;
+            isUpOrDown = false;
+
+            if (facingRight)
+            {
+                flipPlayerX();
+            }
+        }
+    }
+
+    void Jump()
+    {
+        rb2d.AddForce(-(Physics2D.gravity) * 30);
     }
 
     void PlayerMoveUD()
@@ -122,9 +145,28 @@ public class PlayerController : MonoBehaviour {
         float moveHor = Input.GetAxis("Horizontal");
         float moveVer = Input.GetAxis("Vertical");
 
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHor * speed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
-        //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHor * speed, moveVer * speed);
-        //rb2d.AddForce(new Vector2(moveHor * speed, rb2d.velocity.y));
+        if(moveHor < 0 && facingRight == false)
+        {
+            flipPlayerX();
+        }
+        else if(moveHor > 0 && facingRight == true)
+        {
+            flipPlayerX();
+        }
+
+        if (inAir)
+        {
+            speed = 6;
+            if (rb2d.velocity.x >= -4.5f && rb2d.velocity.x <= 4.5f)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x + moveHor * speed * Time.deltaTime, rb2d.velocity.y);
+            }
+        }
+        else
+        {
+            speed = 250;
+            rb2d.velocity = new Vector2(moveHor * speed * Time.deltaTime, rb2d.velocity.y);
+        }
     }
 
     void PlayerMoveLR()
@@ -132,24 +174,69 @@ public class PlayerController : MonoBehaviour {
         float moveHor = Input.GetAxis("Horizontal");
         float moveVer = Input.GetAxis("Vertical");
 
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, moveVer * speed);
-        //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveVer * speed, moveHor * speed);
+        if (moveVer < 0 && facingUp == false)
+        {
+            flipPlayerY();
+        }
+        else if (moveVer > 0 && facingUp == true)
+        {
+            flipPlayerY();
+        }
+
+        if (inAir)
+        {
+            speed = 6;
+            if(rb2d.velocity.y >= -4.5f && rb2d.velocity.y <= 4.5f)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y + moveVer * speed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            speed = 250;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, moveVer * speed * Time.deltaTime);
+        }
+
+    }
+
+    void flipPlayerX()
+    {
+        GetComponentInChildren<mouseSprite>().flipPlayerX();
+        
+        facingRight = !facingRight;
+    }
+
+    void flipPlayerY()
+    {
+        GetComponentInChildren<mouseSprite>().flipPlayerY();
+
+        facingUp = !facingUp;
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.name == "CratePink")
-        {
-            col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+
     }
 
     void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.name == "CratePink")
-        {
-            col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        counter++;
+
+        inAir = false;
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        counter--;
+
+        if(counter == 0)
+        {
+            inAir = true;
         }
     }
 }

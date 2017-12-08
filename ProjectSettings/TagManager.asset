@@ -10,6 +10,11 @@ TagManager:
   - Gate
   - Killer
   - TheBox
+  - Top
+  - Bottom
+  - Left
+  - Right
+  - Canvas
   layers:
   - Default
   - TransparentFX
@@ -19,9 +24,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - JumpDetecting
+  - MouseCollider
+  - BI
   - 
   - 
   - 

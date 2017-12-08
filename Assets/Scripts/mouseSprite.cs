@@ -70,4 +70,14 @@ public class mouseSprite : MonoBehaviour {
         //    renderer.sprite = sprites[3];
         //}
     }
+
+    public void flipPlayerX()
+    {
+        renderer.flipX = !renderer.flipX;
+    }
+
+    public void flipPlayerY()
+    {
+        renderer.flipY = !renderer.flipY;
+    }
 }
