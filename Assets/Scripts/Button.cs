@@ -5,7 +5,7 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 
 	public GateTrigger[] gateTrig;
-	Animator anim;
+	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +23,7 @@ public class Button : MonoBehaviour {
 		foreach (GateTrigger i in gateTrig){
 			i.Toggle(true);
 		}
+		
 	}
 
 	void OnTriggerExit2D() {
