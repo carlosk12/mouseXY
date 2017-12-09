@@ -77,8 +77,12 @@ public class LevelLoader : MonoBehaviour {
                     GameObject go2 = (GameObject)Instantiate(ctp.child, new Vector3(x, y, 0), Quaternion.identity);
                     go2.transform.parent = go.transform;
                 }
-                go.transform.SetParent(transform, true);
-                go.transform.parent = transform;
+                else
+                {
+                    go.transform.SetParent(transform, true);
+                }
+                
+                //go.transform.parent = transform;
 
                 //if (go.transform.childCount > 0)
                 //{

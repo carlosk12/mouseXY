@@ -38,7 +38,9 @@ public class GameController : MonoBehaviour {
 
     public void GetNextLevel()
     {
+        Debug.Log("GetNextLevel");
         level++;
+        Debug.Log("The array index is: " + level);
         load.levelMap = maps[level];
         load.LoadMap();
 

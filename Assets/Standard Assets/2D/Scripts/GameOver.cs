@@ -8,10 +8,15 @@ public class GameOver : MonoBehaviour
 
     public Text winText;
 
+    private void Awake()
+    {
+        //gameCon = FindObjectOfType<GameController>();
+    }
+
     // Use this for initialization
     void Start()
     {
-        //winText = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UnityEngine.UI.Text>();
+        //winText = GetComponent<UnityEngine.UI.Text>();
 
         //winText.gameObject.SetActive(false);
     }
@@ -23,8 +28,11 @@ public class GameOver : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+
         if (col.gameObject.tag == "Player")
         {
+            Debug.Log("debug");
+            //GameController.i.GetNextLevel();
             winText.gameObject.SetActive(true);
         }
     }
