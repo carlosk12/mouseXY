@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
          * W = Gravity pulls you towards the top
          * D = Gravity pulls you towards the right
          * */
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Physics2D.gravity = new Vector2(-9.81F, 0);
             transform.GetChild(1).gameObject.SetActive(true);
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
                 flipPlayerX();
             }
         }
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             Physics2D.gravity = new Vector2(0, -9.81F);
             transform.GetChild(1).gameObject.SetActive(false);
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
                 flipPlayerY();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Physics2D.gravity = new Vector2(0, 9.81F);
             transform.GetChild(1).gameObject.SetActive(false);
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour {
                 flipPlayerY();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Physics2D.gravity = new Vector2(9.81F, 0);
             transform.GetChild(1).gameObject.SetActive(true);
