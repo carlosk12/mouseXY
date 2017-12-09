@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private bool facingRight = false;
     private bool facingUp = false;
     private int counter = 0;
+	bool jump;
+
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -34,11 +36,16 @@ public class PlayerController : MonoBehaviour {
         transform.GetChild(6).gameObject.SetActive(false);
     }
 	
-    void Update()
+    void FixedUpdate()
     {
-    }
+		if (jump)
+		{
+			Jump();
+			jump = false;
+		}
+	}
 
-    void FixedUpdate ()
+    void Update ()
     {
         if(isUpOrDown)
         {
@@ -49,20 +56,21 @@ public class PlayerController : MonoBehaviour {
             PlayerMoveLR();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && !inAir)
+		if (Input.GetKeyDown(KeyCode.Space) && !inAir)
+		{
+			jump = true;
+		}
+
+			/**
+			 * A = Gravity pulls you towards the left
+			 * S = Gravity pulls you towards the bottom
+			 * W = Gravity pulls you towards the top
+			 * D = Gravity pulls you towards the right
+			 * */
+			if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Jump();
-        }
-        
-        /**
-         * A = Gravity pulls you towards the left
-         * S = Gravity pulls you towards the bottom
-         * W = Gravity pulls you towards the top
-         * D = Gravity pulls you towards the right
-         * */
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Physics2D.gravity = new Vector2(-9.81F, 0);
+
+			Physics2D.gravity = new Vector2(-9.81F, 0);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(false);
 
@@ -78,8 +86,9 @@ public class PlayerController : MonoBehaviour {
             {
                 flipPlayerX();
             }
+			Debug.Log("A");
         }
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             Physics2D.gravity = new Vector2(0, -9.81F);
             transform.GetChild(1).gameObject.SetActive(false);
@@ -97,7 +106,7 @@ public class PlayerController : MonoBehaviour {
                 flipPlayerY();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Physics2D.gravity = new Vector2(0, 9.81F);
             transform.GetChild(1).gameObject.SetActive(false);
@@ -115,7 +124,7 @@ public class PlayerController : MonoBehaviour {
                 flipPlayerY();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Physics2D.gravity = new Vector2(9.81F, 0);
             transform.GetChild(1).gameObject.SetActive(true);
@@ -132,7 +141,8 @@ public class PlayerController : MonoBehaviour {
             {
                 flipPlayerX();
             }
-        }
+			Debug.Log("D");
+		}
     }
 
     void Jump()
