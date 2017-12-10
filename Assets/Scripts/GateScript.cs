@@ -20,7 +20,7 @@ public class GateScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-
+		
 	}
 
 	public void OpenGate()
@@ -29,7 +29,8 @@ public class GateScript : MonoBehaviour {
         {
             anim.SetBool("Open", true);
             active = true;
-        }
+			FindObjectOfType<AudioManager>().Play("gateOpen");
+		}
 	}
 
 	public void CloseGate()
@@ -42,7 +43,8 @@ public class GateScript : MonoBehaviour {
                 {
                     anim.SetBool("Open", false);
                     active = false;
-                }
+					FindObjectOfType<AudioManager>().Play("gateClose");
+				}
             }
         }
 

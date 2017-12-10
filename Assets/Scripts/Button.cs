@@ -23,7 +23,8 @@ public class Button : MonoBehaviour {
 		foreach (GateTrigger i in gateTrig){
 			i.Toggle(true);
 		}
-		
+		FindObjectOfType<AudioManager>().Play("buttonDown");
+		FindObjectOfType<AudioManager>().Stop("buttonUp");
 	}
 
 	void OnTriggerExit2D() {
@@ -32,6 +33,8 @@ public class Button : MonoBehaviour {
 		foreach (GateTrigger i in gateTrig){
 			i.Toggle(false);
 		}
+		FindObjectOfType<AudioManager>().Play("buttonUp");
+		FindObjectOfType<AudioManager>().Stop("buttonDown");
 	}
 
 	// visual indicator to show witch gates the button is connected to
