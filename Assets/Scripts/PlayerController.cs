@@ -15,8 +15,13 @@ public class PlayerController : MonoBehaviour
 	private CrateController bla;
 	private bool facingRight = false;
 	private bool facingUp = false;
+	private AudioManager audio;
+
+	// indicates what direction the gravity is pulling
 	private bool gravityRight = false;
 	private bool gravityUp = false;
+	private bool gravityDown = true; // <- default starting gravity
+	private bool gravityLeft = false;
 	
 	private int counter = 0;
 	bool jump;
@@ -24,6 +29,9 @@ public class PlayerController : MonoBehaviour
 	void Awake()
 	{
 		rb2d = GetComponent<Rigidbody2D>();
+		audio = FindObjectOfType<AudioManager>();
+
+
 	}
 
 	void Start()
@@ -63,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space) && !inAir)
 		{
+			audio.Play("mouseJump");
 			jump = true;
 		}
 
@@ -92,12 +101,14 @@ public class PlayerController : MonoBehaviour
 				flipPlayerX();
 			}
 
-			gravityUp = false;
-			gravityRight = false;
-			if (!gravityRight)
+			if (!gravityLeft)
 			{
-				FindObjectOfType<AudioManager>().Play("gravityLeft");
+				audio.Play("gravityLeft");
 			}
+			gravityRight = false;
+			gravityUp = false;
+			gravityDown = false;
+			gravityLeft = true;
 		}
 		else if (Input.GetKeyDown(KeyCode.DownArrow))
 		{
@@ -117,12 +128,14 @@ public class PlayerController : MonoBehaviour
 				flipPlayerY();
 			}
 
-			gravityUp = false;
-			gravityRight = false;
-			if (!gravityUp)
+			if (!gravityDown)
 			{
-				FindObjectOfType<AudioManager>().Play("gravityDown");
+				audio.Play("gravityDown");
 			}
+			gravityRight = false;
+			gravityUp = false;
+			gravityDown = true;
+			gravityLeft = false;
 		}
 		else if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
@@ -142,12 +155,14 @@ public class PlayerController : MonoBehaviour
 				flipPlayerY();
 			}
 
-			gravityUp = true;
-			gravityRight = false;
-			if (gravityUp)
+			if (!gravityUp)
 			{
-				FindObjectOfType<AudioManager>().Play("gravityUp");
+				audio.Play("gravityUp");
 			}
+			gravityRight = false;
+			gravityUp = true;
+			gravityDown = false;
+			gravityLeft = false;
 
 		}
 		else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -168,12 +183,14 @@ public class PlayerController : MonoBehaviour
 				flipPlayerX();
 			}
 
-			gravityUp = false;
-			gravityRight = true;
-			if (gravityRight)
+			if (!gravityRight)
 			{
-				FindObjectOfType<AudioManager>().Play("gravityRight");
+				audio.Play("gravityRight");
 			}
+			gravityRight = true;
+			gravityUp = false;
+			gravityDown = false;
+			gravityLeft = false;
 		}
 	}
 

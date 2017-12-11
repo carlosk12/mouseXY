@@ -174,6 +174,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a71c12ae885e4f80b5144a4652bbeb4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &390316205
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.3914883
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.9894685
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.0146484375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &558421521
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,92 +910,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ed4240f245d064498f7f24132b98706, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1202484040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1202484042}
-  - component: {fileID: 1202484041}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1202484041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1202484040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 551497264c9b3484bbf04f14ce59cc32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: buttonClick_2
-    clip: {fileID: 8300000, guid: 3d8939d8b687bd24f85b66216b0852ca, type: 3}
-    volume: 0.475
-    pitch: 1
-    source: {fileID: 0}
-  - name: buttonDown
-    clip: {fileID: 8300000, guid: 96486ff9b6e85de43accedfb51a90764, type: 3}
-    volume: 0.063
-    pitch: 1
-    source: {fileID: 0}
-  - name: buttonUp
-    clip: {fileID: 8300000, guid: 18f26662e8aff6247a6bd9a8aab549cf, type: 3}
-    volume: 0.08
-    pitch: 1
-    source: {fileID: 0}
-  - name: gateOpen
-    clip: {fileID: 8300000, guid: 67309982a297e1241a7d5430573c67a4, type: 3}
-    volume: 0.104
-    pitch: 1
-    source: {fileID: 0}
-  - name: gateClose
-    clip: {fileID: 8300000, guid: f5d0b56952ed81b4687a67a87a08fb8d, type: 3}
-    volume: 0.104
-    pitch: 1
-    source: {fileID: 0}
-  - name: gravityUp
-    clip: {fileID: 8300000, guid: dadd45123edf1df41a3aed2ea93af585, type: 3}
-    volume: 0.05
-    pitch: 1
-    source: {fileID: 0}
-  - name: gravityDown
-    clip: {fileID: 8300000, guid: 4e4c4a5caa18fc24c86e7ecd4d6cf93b, type: 3}
-    volume: 0.05
-    pitch: 1
-    source: {fileID: 0}
-  - name: gravityLeft
-    clip: {fileID: 8300000, guid: 5f0e655af576ee64c946976aeaec057e, type: 3}
-    volume: 0.05
-    pitch: 1
-    source: {fileID: 0}
-  - name: gravityRight
-    clip: {fileID: 8300000, guid: b0d9f210acc6a274f878ffee28e43b3f, type: 3}
-    volume: 0.05
-    pitch: 1
-    source: {fileID: 0}
---- !u!4 &1202484042
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1202484040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3914883, y: 1.9894685, z: -0.0146484375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1460171758
 Prefab:
   m_ObjectHideFlags: 0
