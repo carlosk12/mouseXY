@@ -6,10 +6,11 @@ public class CrateController : MonoBehaviour {
 
     private bool inAir = false;
     private int counter = 0;
+	private AudioManager audio;
 
 	// Use this for initialization
 	void Start () {
-		
+		audio = FindObjectOfType<AudioManager>();
 	}
 	
 	// Update is called once per frame
@@ -32,17 +33,29 @@ public class CrateController : MonoBehaviour {
             }
         }
 
-        //if (col.gameObject.name != "Player" && gameObject.transform.position.y > col.gameObject.transform.position.y)
-        //{
-        //    inAir = false;
-        //}
-        //else
-        //{
-        //    inAir = true;
-        //}
-    }
+		/*if (col.gameObject.tag != "Player")
+		{
+			var velocity = col.relativeVelocity;
+			Debug.Log("velocity " + velocity);
+			if (velocity.x > 9 || velocity.x < -9)
+			{
+				audio.Play("boxHitWall");
+			}
+			//Debug.Log("velocity " + velocity);
+			//audio.Play("boxHitWall");
+		}*/
 
-    void OnCollisionExit2D(Collision2D col)
+		//if (col.gameobject.name != "player" && gameobject.transform.position.y > col.gameobject.transform.position.y)
+		//{
+		//    inair = false;
+		//}
+		//else
+		//{
+		//    inAir = true;
+		//}
+	}
+
+	void OnCollisionExit2D(Collision2D col)
     {
         counter--;
 
