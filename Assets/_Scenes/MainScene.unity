@@ -584,7 +584,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1157894298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 378, y: 156, z: 0}
+  m_LocalPosition: {x: 374, y: 152, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2122515512}
@@ -843,6 +843,26 @@ MonoBehaviour:
   - name: gateClose
     clip: {fileID: 8300000, guid: f5d0b56952ed81b4687a67a87a08fb8d, type: 3}
     volume: 0.104
+    pitch: 1
+    source: {fileID: 0}
+  - name: gravityUp
+    clip: {fileID: 8300000, guid: dadd45123edf1df41a3aed2ea93af585, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+  - name: gravityDown
+    clip: {fileID: 8300000, guid: 4e4c4a5caa18fc24c86e7ecd4d6cf93b, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+  - name: gravityLeft
+    clip: {fileID: 8300000, guid: 5f0e655af576ee64c946976aeaec057e, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+  - name: gravityRight
+    clip: {fileID: 8300000, guid: b0d9f210acc6a274f878ffee28e43b3f, type: 3}
+    volume: 0.05
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &1202484042
