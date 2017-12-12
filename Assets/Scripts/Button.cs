@@ -5,11 +5,14 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 
 	public GateTrigger[] gateTrig;
-	public Animator anim;
+    public int index;
+	Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
+        LevelLoader load = GetComponent<LevelLoader>();
+        //index = load.ButtonGateIndex;
 	}
 	
 	// Update is called once per frame
@@ -19,10 +22,13 @@ public class Button : MonoBehaviour {
 
 	void OnTriggerEnter2D() {
 		anim.SetBool("GoDown", true);
+        
+i
+        foreach (GateTrigger i in gateTrig){
+        	i.Toggle(true);
+        }
+        
 
-		foreach (GateTrigger i in gateTrig){
-			i.Toggle(true);
-		}
 		FindObjectOfType<AudioManager>().Play("buttonDown");
 		FindObjectOfType<AudioManager>().Stop("buttonUp");
 	}
@@ -38,7 +44,7 @@ public class Button : MonoBehaviour {
 	}
 
 	// visual indicator to show witch gates the button is connected to
-	private void OnDrawGizmos()
+	public void OnDrawGizmos()
 	{
 		Gizmos.color = Color.cyan;
 
@@ -47,6 +53,6 @@ public class Button : MonoBehaviour {
 		}
 	}
 
-	
+
 
 }

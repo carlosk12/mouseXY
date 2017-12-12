@@ -98,6 +98,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateTrig:
   - {fileID: 114911990322437648, guid: 30d6a17a01eb94144b3f72cdea53eb9b, type: 2}
+  buttons:
+  - {fileID: 114468333866131614}
+  - {fileID: 114468333866131614}
+  - {fileID: 114468333866131614}
+  - {fileID: 114468333866131614}
+  - {fileID: 114468333866131614}
+  index: 0
 --- !u!212 &212664142973251174
 SpriteRenderer:
   m_ObjectHideFlags: 1
