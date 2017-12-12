@@ -4,4 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/sceneBjarki3.unity
+    guid: cab77cdb7607aaa4aa6cb23c3dc98082
+  - enabled: 1
+    path: Assets/_Scenes/SceneBjarki4.unity
+    guid: 4f889271701cac34e8dab0a19b891ff7
+  - enabled : 1
+    path: Assets/_Scenes/MainMenu.unity
+    guid: 4c3355f28c5f9ee4f8c9ccbe5ae757a2
+  - enabled: 1
+    path: Assets/_Scenes/MainScene.unity
+    guid: ebce585bf9737ec48981cc001cb03c6d
+  - enabled: 1

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     //public string levelFileName;
@@ -10,11 +11,14 @@ public class GameController : MonoBehaviour {
     //byte[] bytes = System.IO.File.ReadAllBytes(filePath);
     // Use this for initialization
     public float LevelDelay = 2f;
-    public Texture2D [] maps;
-    public LevelLoader load;
-    private int level = -1;
-    public GameObject levelDestroyer;
+    //public Texture2D [] maps;
+    //public LevelLoader load;
+    public string[] scenePaths;
+    // public GameObject levelDestroyer;
     static public GameController i;
+    private int level = -1;
+    
+    private AssetBundle loadAsset;
 
     void Awake () {
 
@@ -28,7 +32,11 @@ public class GameController : MonoBehaviour {
         {
             DestroyObject(gameObject);
         }
-        GetNextLevel();
+        
+
+        //SceneManager.LoadScene(nextScene);
+
+        //GetNextLevel();
     }
 	
 	// Update is called once per frame
@@ -38,11 +46,11 @@ public class GameController : MonoBehaviour {
 
     public void GetNextLevel()
     {
-        Debug.Log("GetNextLevel");
         level++;
-        Debug.Log("The array index is: " + level);
-        load.levelMap = maps[level];
-        load.LoadMap();
+        Debug.Log("Level loading: " + scenePaths[0]);
+        //load.levelMap = maps[level];
+        
+        SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
 
     }
 }

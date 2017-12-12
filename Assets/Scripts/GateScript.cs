@@ -2,39 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateScript : MonoBehaviour {
+public class GateScript : MonoBehaviour
+{
 
-	
 
-	Animator anim;
+
+    Animator anim;
+
     bool active;
 
-	// Use this for initialization
-	void Start()
-	{
-		anim = GetComponent<Animator>();
+    // Use this for initialization
+    void Start()
+    {
+        anim = GetComponent<Animator>();
         Debug.Log(anim.name);
         active = false;
-	}
+    }
 
-	// Update is called once per frame
-	void Update()
-	{
-		
-	}
+    // Update is called once per frame
+    void Update()
+    {
 
-	public void OpenGate()
-	{
+    }
+
+
+
+    public void OpenGate()
+    {
         if (active == false)
         {
             anim.SetBool("Open", true);
             active = true;
-			FindObjectOfType<AudioManager>().Play("gateOpen");
-		}
-	}
+            FindObjectOfType<AudioManager>().Play("gateOpen");
+            
+        }
+      
+    }
+			
 
-	public void CloseGate()
-	{
+    public void CloseGate()
+    {
         if (anim != null)
         {
             if (anim.runtimeAnimatorController != null)
@@ -43,12 +50,12 @@ public class GateScript : MonoBehaviour {
                 {
                     anim.SetBool("Open", false);
                     active = false;
-					FindObjectOfType<AudioManager>().Play("gateClose");
+					          FindObjectOfType<AudioManager>().Play("gateClose");
 				}
             }
         }
+        anim.SetBool("Open", false);
 
-		anim.SetBool("Open", false);
-		//Debug.Log("dsadas");
-	}
+    }
 }
+
