@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateScript : MonoBehaviour {
+public class GateScript : MonoBehaviour
+{
 
-	
 
-	Animator anim;
-    
+
+    Animator anim;
+
     bool active;
 
-	// Use this for initialization
-	void Start()
-	{
-		anim = GetComponent<Animator>();
+    // Use this for initialization
+    void Start()
+    {
+        anim = GetComponent<Animator>();
         Debug.Log(anim.name);
         active = false;
-	}
+    }
 
-	// Update is called once per frame
-	void Update()
-	{
+    // Update is called once per frame
+    void Update()
+    {
 
-	}
+    }
 
     public void OpenGate()
     {
@@ -47,4 +48,5 @@ public class GateScript : MonoBehaviour {
             }
         }
 
+    }
 }
