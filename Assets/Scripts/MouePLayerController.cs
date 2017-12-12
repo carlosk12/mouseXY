@@ -12,9 +12,10 @@ public class MouePLayerController : MonoBehaviour {
 	private bool inAir = false;
 	private Vector2 normal;
 	private CrateController bla;
-	private bool facingRight = false;
-	private bool facingUp = false;
+	private bool facingRight = true;
+	private bool facingUp = true;
 	private AudioManager audio;
+    private mouseSprite mouseSp;
 
 	// indicates what direction the gravity is pulling
 	private bool gravityRight = false;
@@ -29,9 +30,8 @@ public class MouePLayerController : MonoBehaviour {
 	{
 		rb2d = GetComponent<Rigidbody2D>();
 		audio = FindObjectOfType<AudioManager>();
-
-
-	}
+        mouseSp = GetComponentInChildren<mouseSprite>();
+    }
 
 	void Start()
 	{
@@ -97,7 +97,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (facingRight)
 			{
-				//flipPlayerX();
+				flipPlayerX();
 			}
 
 			if (!gravityLeft)
@@ -124,7 +124,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (facingUp)
 			{
-				//flipPlayerY();
+				flipPlayerY();
 			}
 
 			if (!gravityDown)
@@ -151,7 +151,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (facingUp)
 			{
-				//flipPlayerY();
+				flipPlayerY();
 			}
 
 			if (!gravityUp)
@@ -162,7 +162,6 @@ public class MouePLayerController : MonoBehaviour {
 			gravityUp = true;
 			gravityDown = false;
 			gravityLeft = false;
-
 		}
 		else if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
@@ -179,7 +178,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (facingRight)
 			{
-				//flipPlayerX();
+				flipPlayerX();
 			}
 
 			if (!gravityRight)
@@ -205,12 +204,18 @@ public class MouePLayerController : MonoBehaviour {
 
 		if (moveHor < 0 && facingRight == false)
 		{
-			//flipPlayerX();
+			flipPlayerX();
+            mouseSp.anim.enabled = true;
 		}
 		else if (moveHor > 0 && facingRight == true)
 		{
-			//flipPlayerX();
-		}
+			flipPlayerX();
+            mouseSp.anim.enabled = true;
+        }
+        else if(moveHor == 0 && moveVer == 0)
+        {
+            mouseSp.anim.enabled = false;
+        }
 
 		if (inAir)
 		{
@@ -234,14 +239,20 @@ public class MouePLayerController : MonoBehaviour {
 
 		if (moveVer < 0 && facingUp == false)
 		{
-			//flipPlayerY();
-		}
+			flipPlayerY();
+            mouseSp.anim.enabled = true;
+        }
 		else if (moveVer > 0 && facingUp == true)
 		{
-			//flipPlayerY();
-		}
+			flipPlayerY();
+            mouseSp.anim.enabled = true;
+        }
+        else if (moveHor == 0 && moveVer == 0)
+        {
+            mouseSp.anim.enabled = false;
+        }
 
-		if (inAir)
+        if (inAir)
 		{
 			speed = 6;
 			if (rb2d.velocity.y >= -4.5f && rb2d.velocity.y <= 4.5f)
@@ -259,14 +270,17 @@ public class MouePLayerController : MonoBehaviour {
 
 	void flipPlayerX()
 	{
-		GetComponentInChildren<mouseSprite>().flipPlayerX();
+        //GetComponentInChildren<mouseSprite>().flipPlayerX();
+        mouseSp.flipPlayerX();
 
 		facingRight = !facingRight;
 	}
 
 	void flipPlayerY()
 	{
-		GetComponentInChildren<mouseSprite>().flipPlayerY();
+        //GetComponentInChildren<mouseSprite>().flipPlayerY();
+        Debug.Log("lkjjkjæ");
+        mouseSp.flipPlayerY();
 
 		facingUp = !facingUp;
 	}
