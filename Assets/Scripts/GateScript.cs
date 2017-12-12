@@ -7,6 +7,7 @@ public class GateScript : MonoBehaviour {
 	
 
 	Animator anim;
+    
     bool active;
 
 	// Use this for initialization
@@ -23,17 +24,17 @@ public class GateScript : MonoBehaviour {
 
 	}
 
-	public void OpenGate()
-	{
+    public void OpenGate()
+    {
         if (active == false)
         {
             anim.SetBool("Open", true);
             active = true;
         }
-	}
+    }
 
-	public void CloseGate()
-	{
+    public void CloseGate()
+    {
         if (anim != null)
         {
             if (anim.runtimeAnimatorController != null)
@@ -45,6 +46,6 @@ public class GateScript : MonoBehaviour {
                 }
             }
         }
-		
-	}
+
+    }
 }

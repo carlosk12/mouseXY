@@ -19,11 +19,8 @@ public class KillBoxOrPlayer : MonoBehaviour {
     {
         if (col.gameObject.tag == "TheBox")
         {
-            int x = lvl.Xpos;
-            int y = lvl.Ypos;
-            Debug.Log("Ypos: " + y);
             Destroy(col.gameObject);
-            Instantiate(col.gameObject, new Vector3(x, y, 0), Quaternion.identity);
+            Instantiate(col.gameObject, new Vector3(col.transform.position.x, col.transform.position.y, 0), Quaternion.identity);
         }
 
     }

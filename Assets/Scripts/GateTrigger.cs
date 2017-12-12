@@ -6,9 +6,11 @@ public class GateTrigger : MonoBehaviour {
 
 	public GateScript gate;
 	public bool ignoreTrigger;
-	
-	// Use this for initialization
-	void Start () {
+    public GateScript[] gates;
+    public Button[] buttons;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -31,7 +33,7 @@ public class GateTrigger : MonoBehaviour {
 			return;
 		}
 		else if (collision.tag == "Player") {
-			gate.CloseGate();
+			//gate.gates[0].CloseGate();
 		}
 	}
 

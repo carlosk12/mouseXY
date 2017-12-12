@@ -165,6 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb02c14e1991894ab5bee37074e4b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gates:
+  - {fileID: 114590411858127716}
+  - {fileID: 114590411858127716}
+  - {fileID: 114590411858127716}
+  - {fileID: 114590411858127716}
+  - {fileID: 114590411858127716}
 --- !u!212 &212892694111743034
 SpriteRenderer:
   m_ObjectHideFlags: 1

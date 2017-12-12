@@ -16,11 +16,23 @@ public class LevelLoader : MonoBehaviour {
 
     public Texture2D levelMap;
     public ColorTo[] colorTo;
+
+    public GateTrigger[] triggers;
+  
+    public GateTrigger gatescript;
+    public GateTrigger buttonscript;
+    public int ButtonIndex = -1;
+    public int GateIndex = -1;
+    public Color32 TheGateColor;
+    public Color32 TheButtonColor;
+
     public int Xpos;
     public int Ypos;
 
     // Use this for initialization
     void Start () {
+        gatescript = GetComponent<GateTrigger>();
+        buttonscript = GetComponent<GateTrigger>();
     }
 	
 	public void EmptyMap()
@@ -61,18 +73,24 @@ public class LevelLoader : MonoBehaviour {
 
     public void SpawnTileAt(Color32 c, int x , int y)
     {
+        TheButtonColor = Color.red;
+        TheGateColor = Color.green;
+
         if(c.a <= 0)
         {
             return;
         }
         foreach (ColorTo ctp in colorTo)
         {
-            
+           
             if (c.Equals(ctp.color))
             {
+                
+
+                
                 GameObject go = (GameObject)Instantiate(ctp.prefab, new Vector3(x, y, 0), Quaternion.identity);
 
-                if(ctp.child != null)
+                if (ctp.child != null)
                 {
                     GameObject go2 = (GameObject)Instantiate(ctp.child, new Vector3(x, y, 0), Quaternion.identity);
                     go2.transform.parent = go.transform;
@@ -81,6 +99,7 @@ public class LevelLoader : MonoBehaviour {
                 {
                     go.transform.SetParent(transform, true);
                 }
+                
                 
                 //go.transform.parent = transform;
 
@@ -93,6 +112,7 @@ public class LevelLoader : MonoBehaviour {
 
 
             }
+            
         }
 
 
