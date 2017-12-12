@@ -19,4 +19,13 @@ public class ArrowController : MonoBehaviour {
      //   }
 
     }
+
+    void FixedUpdate(){
+        //if(rb2d.angularVelocity < 0.01f)
+        //{
+        //    rb2d.angularVelocity = rb2d.angularVelocity / 3;
+        //}
+
+        Debug.Log("AngVel: " + rb2d.angularVelocity);
+    }
 }
