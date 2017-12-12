@@ -21,7 +21,7 @@ public class Button : MonoBehaviour {
 		
 	}
 
-	void OnTriggerStay2D() {
+	void OnTriggerEnter2D() {
 		anim.SetBool("GoDown", true);
         
 

@@ -114,7 +114,5 @@ public class LevelLoader : MonoBehaviour {
             }
             
         }
-
-
     }
 }
