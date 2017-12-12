@@ -5,7 +5,6 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 
 	public GateTrigger[] gateTrig;
-    
     public int index;
 	Animator anim;
 
@@ -24,19 +23,24 @@ public class Button : MonoBehaviour {
 	void OnTriggerEnter2D() {
 		anim.SetBool("GoDown", true);
         
-
+i
         foreach (GateTrigger i in gateTrig){
         	i.Toggle(true);
         }
         
+
+		FindObjectOfType<AudioManager>().Play("buttonDown");
+		FindObjectOfType<AudioManager>().Stop("buttonUp");
 	}
 
 	void OnTriggerExit2D() {
 		anim.SetBool("GoDown", false);
 
-        foreach (GateTrigger i in gateTrig){
-        	i.Toggle(false);
-        }
+		foreach (GateTrigger i in gateTrig){
+			i.Toggle(false);
+		}
+		FindObjectOfType<AudioManager>().Play("buttonUp");
+		FindObjectOfType<AudioManager>().Stop("buttonDown");
 	}
 
 	// visual indicator to show witch gates the button is connected to
