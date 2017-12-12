@@ -25,14 +25,20 @@ public class GateScript : MonoBehaviour
 
     }
 
+
+
     public void OpenGate()
     {
         if (active == false)
         {
             anim.SetBool("Open", true);
             active = true;
+            FindObjectOfType<AudioManager>().Play("gateOpen");
+            
         }
+      
     }
+			
 
     public void CloseGate()
     {
@@ -44,9 +50,12 @@ public class GateScript : MonoBehaviour
                 {
                     anim.SetBool("Open", false);
                     active = false;
-                }
+					          FindObjectOfType<AudioManager>().Play("gateClose");
+				}
             }
         }
+        anim.SetBool("Open", false);
 
     }
 }
+
