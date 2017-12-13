@@ -10,6 +10,7 @@ public class TutorialScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(Appear());
+        //TutorialImg.enabled = true;
 	}
 	
 	// Update is called once per frame
