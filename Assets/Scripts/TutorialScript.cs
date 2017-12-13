@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TutorialScript : MonoBehaviour {
 
     public Image TutorialImg;
+    private bool enabled = true;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,8 @@ public class TutorialScript : MonoBehaviour {
             TutorialImg.enabled = false;
         }
 	}
+
+
 
     IEnumerator Appear()
     {
