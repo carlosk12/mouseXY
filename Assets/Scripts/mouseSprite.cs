@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class mouseSprite : MonoBehaviour {
 
-    //public Sprite[] sprites;
+    public Sprite[] sprites;
     private SpriteRenderer renderer;
     [HideInInspector]
     public Animator anim;
@@ -16,7 +16,7 @@ public class mouseSprite : MonoBehaviour {
     }
     
     void Start () {
-        //renderer.sprite = sprites[0];
+        renderer.sprite = sprites[0];
         anim.enabled = false;
     }
 	
@@ -26,23 +26,23 @@ public class mouseSprite : MonoBehaviour {
         {
             if(Physics2D.gravity.y < 0)
             {
-                //renderer.sprite = sprites[0];
+                renderer.sprite = sprites[0];
                 
             }
             else if(Physics2D.gravity.y > 0)
             {
-                //renderer.sprite = sprites[1];
+                renderer.sprite = sprites[1];
             }
         }
         else if(Physics2D.gravity.y == 0)
         {
             if(Physics2D.gravity.x < 0)
             {
-                //renderer.sprite = sprites[2];
+                renderer.sprite = sprites[2];
             }
             else if(Physics2D.gravity.x > 0)
             {
-                //renderer.sprite = sprites[3];
+                renderer.sprite = sprites[3];
             }
         }
 
@@ -62,21 +62,38 @@ public class mouseSprite : MonoBehaviour {
         //    renderer.sprite = sprites[3];
         //}
 
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //if (Input.GetKeyDown(KeyCode.A))
         //{
-        //    renderer.sprite = sprites[2];
+        //    anim.enabled = true;
         //}
         //else if (Input.GetKeyDown(KeyCode.S))
         //{
-        //    renderer.sprite = sprites[0];
+        //    anim.enabled = true;
         //}
         //else if (Input.GetKeyDown(KeyCode.W))
         //{
-        //    renderer.sprite = sprites[1];
+        //    anim.enabled = true;
         //}
         //else if (Input.GetKeyDown(KeyCode.D))
         //{
-        //    renderer.sprite = sprites[3];
+        //    anim.enabled = true;
+        //}
+
+        //if (Input.GetKeyUp(KeyCode.A))
+        //{
+        //    anim.enabled = false;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.S))
+        //{
+        //    anim.enabled = false;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.W))
+        //{
+        //    anim.enabled = false;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.D))
+        //{
+        //    anim.enabled = false;
         //}
     }
 

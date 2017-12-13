@@ -12,8 +12,8 @@ public class MouePLayerController : MonoBehaviour {
 	private bool inAir = false;
 	private Vector2 normal;
 	private CrateController bla;
-	private bool facingRight = true;
-	private bool facingUp = true;
+	private bool facingRight = false;
+	private bool facingUp = false;
 	private AudioManager audio;
     private mouseSprite mouseSp;
 
@@ -35,7 +35,6 @@ public class MouePLayerController : MonoBehaviour {
 
 	void Start()
 	{
-
 		Physics2D.gravity = new Vector2(0, -9.81f);
 
 		normal = Vector2.up;
@@ -95,7 +94,7 @@ public class MouePLayerController : MonoBehaviour {
 			isUpOrDown = false;
 			normal = Vector2.right;
 
-			if (facingRight)
+			if (!facingRight)
 			{
 				flipPlayerX();
 			}
@@ -176,7 +175,7 @@ public class MouePLayerController : MonoBehaviour {
 			normal = Vector2.left;
 			isUpOrDown = false;
 
-			if (facingRight)
+			if (!facingRight)
 			{
 				flipPlayerX();
 			}
@@ -202,22 +201,16 @@ public class MouePLayerController : MonoBehaviour {
 		float moveHor = Input.GetAxis("Horizontal");
 		float moveVer = Input.GetAxis("Vertical");
 
-		if (moveHor < 0 && facingRight == false)
+		if (moveHor < 0 && facingRight == true)
 		{
 			flipPlayerX();
-            mouseSp.anim.enabled = true;
 		}
-		else if (moveHor > 0 && facingRight == true)
+		else if (moveHor > 0 && facingRight == false)
 		{
 			flipPlayerX();
-            mouseSp.anim.enabled = true;
-        }
-        else if(moveHor == 0 && moveVer == 0)
-        {
-            mouseSp.anim.enabled = false;
         }
 
-		if (inAir)
+        if (inAir)
 		{
 			speed = 6;
 			if (rb2d.velocity.x >= -4.5f && rb2d.velocity.x <= 4.5f)
@@ -240,16 +233,16 @@ public class MouePLayerController : MonoBehaviour {
 		if (moveVer < 0 && facingUp == false)
 		{
 			flipPlayerY();
-            mouseSp.anim.enabled = true;
+            //mouseSp.anim.enabled = true;
         }
 		else if (moveVer > 0 && facingUp == true)
 		{
 			flipPlayerY();
-            mouseSp.anim.enabled = true;
+            //mouseSp.anim.enabled = true;
         }
         else if (moveHor == 0 && moveVer == 0)
         {
-            mouseSp.anim.enabled = false;
+            //mouseSp.anim.enabled = false;
         }
 
         if (inAir)
