@@ -23,7 +23,7 @@ public class Button : MonoBehaviour {
 	void OnTriggerEnter2D() {
 		anim.SetBool("GoDown", true);
         
-i
+
         foreach (GateTrigger i in gateTrig){
         	i.Toggle(true);
         }
