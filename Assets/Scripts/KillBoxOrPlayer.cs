@@ -37,11 +37,8 @@ public class KillBoxOrPlayer : MonoBehaviour {
         }
         else if (col.gameObject.tag == "Player")
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-      
-            GameObject go = (GameObject)Instantiate(player, PlayerLocation, Quaternion.identity);
-            Destroy(player);
-
+            Debug.Log("helloThere");
+            GameController.i.getCurrLevel();
         }
 
     }
