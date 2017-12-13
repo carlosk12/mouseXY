@@ -5,7 +5,7 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 
 	public GateTrigger[] gateTrig;
-    public int index;
+    //public int index;
 	Animator anim;
 
 	// Use this for initialization
