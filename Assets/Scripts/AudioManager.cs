@@ -6,10 +6,24 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour {
 
+	public static AudioManager instance;
+
 	public Sound[] sounds;
 	// Use this for initialization
 	void Awake ()
 	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		DontDestroyOnLoad(gameObject); 
+
 		foreach (Sound s in sounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
@@ -17,7 +31,13 @@ public class AudioManager : MonoBehaviour {
 
 			s.source.volume = s.volume;
 			s.source.pitch = s.pitch;
+			s.source.loop = s.loop;
 		}
+	}
+
+	void Start()
+	{
+		//Play("Music");
 	}
 
 	public void Play (string name)
