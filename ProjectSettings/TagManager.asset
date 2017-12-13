@@ -16,6 +16,7 @@ TagManager:
   - Right
   - Canvas
   - Surroundings
+  - mouseCol
   layers:
   - Default
   - TransparentFX
