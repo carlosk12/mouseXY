@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GateScript : MonoBehaviour
 {
-
-
-
     Animator anim;
 
     bool active;
@@ -15,6 +12,7 @@ public class GateScript : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+
         Debug.Log(anim.name);
         active = false;
     }
