@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gate: {fileID: 114590411858127716}
   ignoreTrigger: 1
+  gates: []
+  buttons: []
 --- !u!114 &114590411858127716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,12 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb02c14e1991894ab5bee37074e4b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gates:
-  - {fileID: 114590411858127716}
-  - {fileID: 114590411858127716}
-  - {fileID: 114590411858127716}
-  - {fileID: 114590411858127716}
-  - {fileID: 114590411858127716}
 --- !u!212 &212892694111743034
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -185,7 +181,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 212b0723c768b884e931d06eb4a3d1b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

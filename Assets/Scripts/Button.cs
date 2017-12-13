@@ -5,14 +5,14 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 
 	public GateTrigger[] gateTrig;
-    public int index;
+
+
 	Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
         LevelLoader load = GetComponent<LevelLoader>();
-        //index = load.ButtonGateIndex;
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,7 @@ public class Button : MonoBehaviour {
 
 	void OnTriggerEnter2D() {
 		anim.SetBool("GoDown", true);
-        
+
         foreach (GateTrigger i in gateTrig){
         	i.Toggle(true);
         }

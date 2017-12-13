@@ -17,7 +17,7 @@ public class mouseSprite : MonoBehaviour {
     
     void Start () {
         renderer.sprite = sprites[0];
-        anim.enabled = false;
+        //anim.enabled = false;
     }
 	
 	// Update is called once per frame

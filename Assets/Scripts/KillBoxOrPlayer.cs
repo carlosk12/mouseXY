@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class KillBoxOrPlayer : MonoBehaviour {
 
-    public LevelLoader lvl;    
+    public LevelLoader lvl;
+    private GameObject spawnPoint;
+    private Vector3 boxLocation;
+    private Vector3 PlayerLocation;
 
-	// Use this for initialization
-	void Start () {
-        lvl = FindObjectOfType<LevelLoader>();
+
+    private void Awake()
+    {
+        spawnPoint = GameObject.FindGameObjectWithTag("TheBox");
+        boxLocation = spawnPoint.transform.position;
+        spawnPoint = GameObject.Find("leftRightCol");
+        PlayerLocation = spawnPoint.transform.position;
+    }
+    // Use this for initialization
+    void Start () {
+        
+
 	}
 	
 	// Update is called once per frame
@@ -19,8 +31,14 @@ public class KillBoxOrPlayer : MonoBehaviour {
     {
         if (col.gameObject.tag == "TheBox")
         {
-            Destroy(col.gameObject);
-            Instantiate(col.gameObject, new Vector3(col.transform.position.x, col.transform.position.y, 0), Quaternion.identity);
+            //Destroy(col.gameObject);
+            col.gameObject.transform.position = boxLocation;
+            
+        }
+        else if (col.gameObject.tag == "Player")
+        {
+            Debug.Log("helloThere");
+            GameController.i.getCurrLevel();
         }
 
     }
