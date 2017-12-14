@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814105853482068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3914883, y: 1.9894685, z: -0.0146484375}
+  m_LocalPosition: {x: -9.04, y: 1.6742904, z: -0.0146484375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,53 +52,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: boxHitWall
-    clip: {fileID: 8300000, guid: 3ecfb546b8e717c49ab61cb8e99083ac, type: 3}
+  - name: mouseDeath
+    clip: {fileID: 8300000, guid: fb854ed7ca769a842b5821e39a7202df, type: 3}
     volume: 0.05
     pitch: 1
     source: {fileID: 0}
+    loop: 0
   - name: buttonDown
     clip: {fileID: 8300000, guid: 96486ff9b6e85de43accedfb51a90764, type: 3}
     volume: 0.063
     pitch: 1
     source: {fileID: 0}
+    loop: 0
   - name: buttonUp
     clip: {fileID: 8300000, guid: 18f26662e8aff6247a6bd9a8aab549cf, type: 3}
     volume: 0.08
     pitch: 1
     source: {fileID: 0}
+    loop: 0
   - name: gateOpen
     clip: {fileID: 8300000, guid: 67309982a297e1241a7d5430573c67a4, type: 3}
     volume: 0.104
     pitch: 1
     source: {fileID: 0}
+    loop: 0
   - name: gateClose
     clip: {fileID: 8300000, guid: f5d0b56952ed81b4687a67a87a08fb8d, type: 3}
     volume: 0.104
     pitch: 1
     source: {fileID: 0}
+    loop: 0
   - name: gravityUp
     clip: {fileID: 8300000, guid: dadd45123edf1df41a3aed2ea93af585, type: 3}
     volume: 0.025
     pitch: 3
     source: {fileID: 0}
+    loop: 0
   - name: gravityDown
     clip: {fileID: 8300000, guid: 4e4c4a5caa18fc24c86e7ecd4d6cf93b, type: 3}
     volume: 0.025
     pitch: 3
     source: {fileID: 0}
+    loop: 0
   - name: gravityLeft
     clip: {fileID: 8300000, guid: 5f0e655af576ee64c946976aeaec057e, type: 3}
     volume: 0.025
     pitch: 3
     source: {fileID: 0}
+    loop: 0
   - name: gravityRight
     clip: {fileID: 8300000, guid: b0d9f210acc6a274f878ffee28e43b3f, type: 3}
     volume: 0.025
     pitch: 3
     source: {fileID: 0}
+    loop: 0
   - name: mouseJump
     clip: {fileID: 8300000, guid: 1385d3910d8a9b24191b72dd55a85a85, type: 3}
     volume: 0.639
-    pitch: 3
+    pitch: 1
     source: {fileID: 0}
+    loop: 0
+  - name: boxDeath
+    clip: {fileID: 8300000, guid: 132e4b7710427ec4b974a1623bb7578a, type: 3}
+    volume: 0.639
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: winSound
+    clip: {fileID: 8300000, guid: 0ad02cff7ea89f74db3faf2c11402721, type: 3}
+    volume: 0.639
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
