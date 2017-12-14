@@ -33,7 +33,9 @@ public class KillBoxOrPlayer : MonoBehaviour {
         {
             //Destroy(col.gameObject);
             col.gameObject.transform.position = boxLocation;
-            
+            col.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+
         }
         else if (col.gameObject.tag == "Player")
         {

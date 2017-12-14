@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour {
 
@@ -10,7 +11,13 @@ public class TutorialScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(Appear());
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Level1")
+        {
+            StartCoroutine(Appear());
+        }
+        
         //TutorialImg.enabled = true;
 	}
 	
