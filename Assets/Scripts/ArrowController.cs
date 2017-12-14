@@ -26,6 +26,6 @@ public class ArrowController : MonoBehaviour {
         //    rb2d.angularVelocity = rb2d.angularVelocity / 3;
         //}
 
-        Debug.Log("AngVel: " + rb2d.angularVelocity);
+        //Debug.Log("AngVel: " + rb2d.angularVelocity);
     }
 }
