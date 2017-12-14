@@ -7,15 +7,17 @@ using UnityEngine.SceneManagement;
 public class TutorialScript : MonoBehaviour {
 
     public Image TutorialImg;
-    private bool enabled = true;
+    private bool enabled = false;
 
 	// Use this for initialization
 	void Start () {
+        TutorialImg.enabled = false;
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "Level1")
         {
-            StartCoroutine(Appear());
+            TutorialImg.enabled = true;
+            //StartCoroutine(Appear());
         }
         
         //TutorialImg.enabled = true;
@@ -33,8 +35,8 @@ public class TutorialScript : MonoBehaviour {
 
     IEnumerator Appear()
     {
-        TutorialImg.enabled = false;
+        
         yield return new WaitForSeconds(2);
-        TutorialImg.enabled = true;
+        
     }
 }
