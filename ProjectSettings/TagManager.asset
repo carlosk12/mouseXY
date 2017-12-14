@@ -17,6 +17,7 @@ TagManager:
   - Canvas
   - Surroundings
   - mouseCol
+  - metalBox
   layers:
   - Default
   - TransparentFX
