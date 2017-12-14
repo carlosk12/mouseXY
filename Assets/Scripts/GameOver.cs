@@ -31,10 +31,18 @@ public class GameOver : MonoBehaviour
 
         if (col.gameObject.tag == "Player")
         {
-            Debug.Log("debug");
-            GameController.i.GetNextLevel();
             winText.gameObject.SetActive(true);
+            StartCoroutine(NextLvl());
+            
+            
         }
+    }
+
+    IEnumerator NextLvl()
+    {
+
+        yield return new WaitForSeconds(2);
+        GameController.i.GetNextLevel();
     }
 }
     
