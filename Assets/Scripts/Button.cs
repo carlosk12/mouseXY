@@ -5,7 +5,7 @@ using UnityEngine;
 public class Button : MonoBehaviour {
 
 	public GateTrigger[] gateTrig;
-
+	public int colCounter = 0;
 
 	Animator anim;
 
@@ -13,33 +13,46 @@ public class Button : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator>();
         LevelLoader load = GetComponent<LevelLoader>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
-	void OnTriggerEnter2D() {
+	private void OnTriggerEnter2D(Collider2D collision) {
+
+		colCounter++;
 		anim.SetBool("GoDown", true);
 
         foreach (GateTrigger i in gateTrig){
         	i.Toggle(true);
         }
-        
 
-		FindObjectOfType<AudioManager>().Play("buttonDown");
-		FindObjectOfType<AudioManager>().Stop("buttonUp");
+		if (colCounter == 1)
+		{
+			FindObjectOfType<AudioManager>().Play("buttonDown");
+			FindObjectOfType<AudioManager>().Stop("buttonUp");
+		}
 	}
 
-	void OnTriggerExit2D() {
-		anim.SetBool("GoDown", false);
+	//void OnTriggerExit2D() {
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		colCounter--;
+		Debug.Log("colCounter" + colCounter);
 
-		foreach (GateTrigger i in gateTrig){
-			i.Toggle(false);
+		if (colCounter == 0)
+		{
+			anim.SetBool("GoDown", false);
+
+			foreach (GateTrigger i in gateTrig)
+			{
+				i.Toggle(false);
+			}
+			FindObjectOfType<AudioManager>().Play("buttonUp");
+			FindObjectOfType<AudioManager>().Stop("buttonDown");
 		}
-		FindObjectOfType<AudioManager>().Play("buttonUp");
-		FindObjectOfType<AudioManager>().Stop("buttonDown");
 	}
 
 	// visual indicator to show witch gates the button is connected to
