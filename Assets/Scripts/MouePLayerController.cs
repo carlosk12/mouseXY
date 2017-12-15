@@ -101,7 +101,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (!gravityLeft)
 			{
-				audio.Play("gravityLeft");
+				audio.Play("gravityLeftRight");
 			}
 			gravityRight = false;
 			gravityUp = false;
@@ -128,7 +128,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (!gravityDown)
 			{
-				audio.Play("gravityDown");
+				audio.Play("gravityUpDown");
 			}
 			gravityRight = false;
 			gravityUp = false;
@@ -155,7 +155,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (!gravityUp)
 			{
-				audio.Play("gravityUp");
+				audio.Play("gravityUpDown");
 			}
 			gravityRight = false;
 			gravityUp = true;
@@ -182,7 +182,7 @@ public class MouePLayerController : MonoBehaviour {
 
 			if (!gravityRight)
 			{
-				audio.Play("gravityRight");
+				audio.Play("gravityLeftRight");
 			}
 			gravityRight = true;
 			gravityUp = false;
@@ -272,7 +272,6 @@ public class MouePLayerController : MonoBehaviour {
 	void flipPlayerY()
 	{
         //GetComponentInChildren<mouseSprite>().flipPlayerY();
-        Debug.Log("lkjjkjæ");
         mouseSp.flipPlayerY();
 
 		facingUp = !facingUp;

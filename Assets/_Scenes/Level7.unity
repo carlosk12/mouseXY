@@ -2943,6 +2943,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4813853067380834, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -9.04
@@ -2975,6 +2980,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.data[10].name
+      value: 'menuMusic '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8eac504c618c5344b77cb52c38b789d, type: 3}
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.639
+      objectReference: {fileID: 0}
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.data[10].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.data[9].name
+      value: winSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 114584141615514648, guid: 61df07edf0a53f843ab9f0d6f94303a8,
+        type: 2}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dffd3ee6f479b5441916f2612412b5f5, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61df07edf0a53f843ab9f0d6f94303a8, type: 2}
   m_IsPrefabParent: 0
