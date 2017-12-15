@@ -31,7 +31,7 @@ public class ScalableCamera : MonoBehaviour {
 
 			Camera.main.orthographicSize = defaultWidth / Camera.main.aspect;
 
-
+    
 //CameraPos.y was added in case camera in case camera's y is not in 0
 			Camera.main.transform.position= new Vector3(CameraPos.x,CameraPos.y + adaptPosition*(defaultHeight-Camera.main.orthographicSize),CameraPos.z);
 
