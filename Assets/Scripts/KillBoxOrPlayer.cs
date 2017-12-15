@@ -9,12 +9,16 @@ public class KillBoxOrPlayer : MonoBehaviour {
     private Vector3 boxLocation;
     private Vector3 PlayerLocation;
 
-    private void Awake()
-    {
+	private void Awake()
+	{
 		spawnPoint = GameObject.FindGameObjectWithTag("TheBox");
-        boxLocation = spawnPoint.transform.position;
-		
-        spawnPoint = GameObject.Find("leftRightCol");
+		if (spawnPoint != null)
+		{
+			boxLocation = spawnPoint.transform.position;
+
+		}
+
+		spawnPoint = GameObject.Find("leftRightCol");
         PlayerLocation = spawnPoint.transform.position;
     }
     // Use this for initialization
@@ -44,7 +48,6 @@ public class KillBoxOrPlayer : MonoBehaviour {
 			FindObjectOfType<AudioManager>().Stop("boxDeath");
 			FindObjectOfType<AudioManager>().Play("mouseDeath");
 
-			Debug.Log("helloThere");
             GameController.i.getCurrLevel();
         }
 

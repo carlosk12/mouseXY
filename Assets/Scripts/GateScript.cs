@@ -23,8 +23,6 @@ public class GateScript : MonoBehaviour
 
     }
 
-
-
     public void OpenGate()
     {
         if (active == false)
@@ -48,7 +46,7 @@ public class GateScript : MonoBehaviour
                 {
                     anim.SetBool("Open", false);
                     active = false;
-					          FindObjectOfType<AudioManager>().Play("gateClose");
+					FindObjectOfType<AudioManager>().Play("gateClose");
 				}
             }
         }
