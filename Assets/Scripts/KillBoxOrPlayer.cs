@@ -42,7 +42,7 @@ public class KillBoxOrPlayer : MonoBehaviour {
         else if (col.gameObject.tag == "Player")
         {
 			FindObjectOfType<AudioManager>().Stop("boxDeath");
-			FindObjectOfType<AudioManager>().Play("playerDeath");
+			FindObjectOfType<AudioManager>().Play("mouseDeath");
 
 			Debug.Log("helloThere");
             GameController.i.getCurrLevel();

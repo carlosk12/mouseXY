@@ -33,8 +33,8 @@ public class GameOver : MonoBehaviour
         {
             winText.gameObject.SetActive(true);
             StartCoroutine(NextLvl());
-            
-            
+
+            FindObjectOfType<AudioManager>().Play("winSound");
         }
     }
 
