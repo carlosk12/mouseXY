@@ -56,10 +56,7 @@ public class PlayerController : MonoBehaviour
 			Jump();
 			jump = false;
 		}
-	}
 
-	void Update()
-	{
 		if (isUpOrDown)
 		{
 			PlayerMoveUD();
@@ -68,6 +65,11 @@ public class PlayerController : MonoBehaviour
 		{
 			PlayerMoveLR();
 		}
+	}
+
+	void Update()
+	{
+		
 
 		if (Input.GetKeyDown(KeyCode.Space) && !inAir)
 		{
