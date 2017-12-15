@@ -9,11 +9,10 @@ public class KillBoxOrPlayer : MonoBehaviour {
     private Vector3 boxLocation;
     private Vector3 PlayerLocation;
 
-
     private void Awake()
     {
-        spawnPoint = GameObject.FindGameObjectWithTag("TheBox");
-        boxLocation = spawnPoint.transform.position;
+		spawnPoint = GameObject.FindGameObjectWithTag("TheBox");
+		
         spawnPoint = GameObject.Find("leftRightCol");
         PlayerLocation = spawnPoint.transform.position;
     }
@@ -31,15 +30,20 @@ public class KillBoxOrPlayer : MonoBehaviour {
     {
         if (col.gameObject.tag == "TheBox")
         {
-            //Destroy(col.gameObject);
-            col.gameObject.transform.position = boxLocation;
-            col.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			FindObjectOfType<AudioManager>().Play("boxDeath");
 
+			//Destroy(col.gameObject);
+			col.gameObject.transform.position = boxLocation;
+            col.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			
 
         }
         else if (col.gameObject.tag == "Player")
         {
-            Debug.Log("helloThere");
+			FindObjectOfType<AudioManager>().Stop("boxDeath");
+			FindObjectOfType<AudioManager>().Play("playerDeath");
+
+			Debug.Log("helloThere");
             GameController.i.getCurrLevel();
         }
 

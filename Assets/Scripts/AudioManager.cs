@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour {
 		if (instance == null)
 		{
 			instance = this;
+			DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
@@ -22,7 +23,7 @@ public class AudioManager : MonoBehaviour {
 			return;
 		}
 
-		DontDestroyOnLoad(gameObject); 
+		
 
 		foreach (Sound s in sounds)
 		{
