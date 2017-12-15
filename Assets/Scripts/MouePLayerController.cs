@@ -49,6 +49,15 @@ public class MouePLayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		if (isUpOrDown)
+		{
+			PlayerMoveUD();
+		}
+		else
+		{
+			PlayerMoveLR();
+		}
+
 		if (jump)
 		{
 			Jump();
@@ -58,14 +67,6 @@ public class MouePLayerController : MonoBehaviour {
 
 	void Update()
 	{
-		if (isUpOrDown)
-		{
-			PlayerMoveUD();
-		}
-		else
-		{
-			PlayerMoveLR();
-		}
 
 		if (Input.GetKeyDown(KeyCode.Space) && !inAir)
 		{
@@ -215,13 +216,13 @@ public class MouePLayerController : MonoBehaviour {
 			speed = 6;
 			if (rb2d.velocity.x >= -4.5f && rb2d.velocity.x <= 4.5f)
 			{
-				rb2d.velocity = new Vector2(rb2d.velocity.x + moveHor * speed * Time.deltaTime, rb2d.velocity.y);
+				rb2d.velocity = new Vector2(rb2d.velocity.x + moveHor * speed * Time.fixedDeltaTime, rb2d.velocity.y);
 			}
 		}
 		else
 		{
 			speed = 250;
-			rb2d.velocity = new Vector2(moveHor * speed * Time.deltaTime, rb2d.velocity.y);
+			rb2d.velocity = new Vector2(moveHor * speed * Time.fixedDeltaTime, rb2d.velocity.y);
 		}
 	}
 
@@ -250,13 +251,13 @@ public class MouePLayerController : MonoBehaviour {
 			speed = 6;
 			if (rb2d.velocity.y >= -4.5f && rb2d.velocity.y <= 4.5f)
 			{
-				rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y + moveVer * speed * Time.deltaTime);
+				rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y + moveVer * speed * Time.fixedDeltaTime);
 			}
 		}
 		else
 		{
 			speed = 250;
-			rb2d.velocity = new Vector2(rb2d.velocity.x, moveVer * speed * Time.deltaTime);
+			rb2d.velocity = new Vector2(rb2d.velocity.x, moveVer * speed * Time.fixedDeltaTime);
 		}
 
 	}
