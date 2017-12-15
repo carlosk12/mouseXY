@@ -85,7 +85,8 @@ public class MouePLayerController : MonoBehaviour {
 
 			Physics2D.gravity = new Vector2(-9.81F, 0);
 			transform.GetChild(1).gameObject.SetActive(true);
-			transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, 1, 1);
+            transform.GetChild(2).gameObject.SetActive(false);
 
 			transform.GetChild(3).gameObject.SetActive(false);
 			transform.GetChild(4).gameObject.SetActive(false);
@@ -114,8 +115,9 @@ public class MouePLayerController : MonoBehaviour {
 			Physics2D.gravity = new Vector2(0, -9.81F);
 			transform.GetChild(1).gameObject.SetActive(false);
 			transform.GetChild(2).gameObject.SetActive(true);
+            //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, 1, 1);
 
-			transform.GetChild(3).gameObject.SetActive(false);
+            transform.GetChild(3).gameObject.SetActive(false);
 			transform.GetChild(4).gameObject.SetActive(true);
 			transform.GetChild(5).gameObject.SetActive(false);
 			transform.GetChild(6).gameObject.SetActive(false);
@@ -141,8 +143,9 @@ public class MouePLayerController : MonoBehaviour {
 			Physics2D.gravity = new Vector2(0, 9.81F);
 			transform.GetChild(1).gameObject.SetActive(false);
 			transform.GetChild(2).gameObject.SetActive(true);
+            //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, -1, 1);
 
-			transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
 			transform.GetChild(4).gameObject.SetActive(false);
 			transform.GetChild(5).gameObject.SetActive(false);
 			transform.GetChild(6).gameObject.SetActive(false);
@@ -167,7 +170,8 @@ public class MouePLayerController : MonoBehaviour {
 		{
 			Physics2D.gravity = new Vector2(9.81F, 0);
 			transform.GetChild(1).gameObject.SetActive(true);
-			transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, -1, 1);
+            transform.GetChild(2).gameObject.SetActive(false);
 
 			transform.GetChild(3).gameObject.SetActive(false);
 			transform.GetChild(4).gameObject.SetActive(false);
@@ -202,13 +206,35 @@ public class MouePLayerController : MonoBehaviour {
 		float moveHor = Input.GetAxis("Horizontal");
 		float moveVer = Input.GetAxis("Vertical");
 
-		if (moveHor < 0 && facingRight == true)
+        if (moveHor < 0 && facingRight == true)
 		{
-			flipPlayerX();
-		}
+
+            flipPlayerX();
+            if(facingUp)
+            {
+                Debug.Log("Vinstri Niður");
+                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                Debug.Log("Vinstri Upp");
+                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, -1, 1);
+            }
+            
+        }
 		else if (moveHor > 0 && facingRight == false)
 		{
 			flipPlayerX();
+            if (facingUp)
+            {
+                Debug.Log("Hægri Niður");
+                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                Debug.Log("Vinstri Upp");
+                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(-1, -1, 1);
+            }
         }
 
         if (inAir)
@@ -234,11 +260,14 @@ public class MouePLayerController : MonoBehaviour {
 		if (moveVer < 0 && facingUp == false)
 		{
 			flipPlayerY();
+
+            transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, 1, 1);
             //mouseSp.anim.enabled = true;
         }
 		else if (moveVer > 0 && facingUp == true)
 		{
 			flipPlayerY();
+            transform.GetChild(1).gameObject.transform.localScale = new Vector3(-1, 1, 1);
             //mouseSp.anim.enabled = true;
         }
         else if (moveHor == 0 && moveVer == 0)
