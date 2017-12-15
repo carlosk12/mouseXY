@@ -12,6 +12,7 @@ public class KillBoxOrPlayer : MonoBehaviour {
     private void Awake()
     {
 		spawnPoint = GameObject.FindGameObjectWithTag("TheBox");
+        boxLocation = spawnPoint.transform.position;
 		
         spawnPoint = GameObject.Find("leftRightCol");
         PlayerLocation = spawnPoint.transform.position;
