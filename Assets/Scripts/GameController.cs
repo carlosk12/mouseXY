@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour {
     public void GetNextLevel()
     {
         level++;
-        Debug.Log("Level loading: " + scenePaths[0]);
         //load.levelMap = maps[level];
         
         SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
