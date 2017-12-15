@@ -9,8 +9,8 @@ public class ScalableCamera : MonoBehaviour {
 	public int adaptPosition;
 
 
-	float defaultWidth;
-	float defaultHeight;
+	public float defaultWidth;
+	public float defaultHeight;
 
 
 	Vector3 CameraPos;
