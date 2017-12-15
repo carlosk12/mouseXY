@@ -25,19 +25,20 @@ public class GameController : MonoBehaviour {
         if (!i)
         {
             i = this;
-            DontDestroyOnLoad(gameObject);
+            
         }
 
         else
         {
             DestroyObject(gameObject);
         }
-        
 
-        //SceneManager.LoadScene(nextScene);
+		DontDestroyOnLoad(gameObject);
 
-        //GetNextLevel();
-    }
+		//SceneManager.LoadScene(nextScene);
+
+		//GetNextLevel();
+	}
 	
 	// Update is called once per frame
 	void Update () {
