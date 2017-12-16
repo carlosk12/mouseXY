@@ -67,6 +67,11 @@ public class GameController : MonoBehaviour {
     public void ChangeIndexAndLoad(int index)
     {
         level = index;
-        SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
+		if (level > 1)
+		{
+			Debug.Log("kássa");
+			FindObjectOfType<AudioManager>().Stop("menuMusic");
+		}
+		SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
     }
 }
