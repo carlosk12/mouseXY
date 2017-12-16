@@ -11,7 +11,7 @@ public class BackToMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         img.enabled = false;
-        imgOn = false;
+        imgOn = false;  
 	}
 	
 	// Update is called once per frame
