@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MouePLayerController : MonoBehaviour {
@@ -75,6 +76,11 @@ public class MouePLayerController : MonoBehaviour {
 			audio.Play("mouseJump");
 			jump = true;
 		}
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
 
 		/**
 		 * A = Gravity pulls you towards the left

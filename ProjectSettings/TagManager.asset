@@ -18,6 +18,7 @@ TagManager:
   - Surroundings
   - mouseCol
   - metalBox
+  - DropDown
   layers:
   - Default
   - TransparentFX

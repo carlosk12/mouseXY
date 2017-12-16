@@ -5,8 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneOnClick : MonoBehaviour {
 
-	public void LoadByIndex(int sceneIndex)
+    GameController gameCon;
+    int level;
+
+    void Awake()
     {
-        SceneManager.LoadScene(sceneIndex);
+        gameCon = GetComponent<GameController>();
+    }
+
+    public void LoadByIndex(int sceneIndex)
+    {
+        //gameCon.ChangeIndexAndLoad(level);
+        //SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void GetIndex(int index)
+    {
+        level = index;
     }
 }

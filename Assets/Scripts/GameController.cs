@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour {
     public string[] scenePaths;
     // public GameObject levelDestroyer;
     static public GameController i;
-    private int level = 0;
+    public int level = 0;
     
     private AssetBundle loadAsset;
 
@@ -62,6 +62,11 @@ public class GameController : MonoBehaviour {
     }
     public void getCurrLevel()
     {
+        SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
+    }
+    public void ChangeIndexAndLoad(int index)
+    {
+        level = index;
         SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
     }
 }
