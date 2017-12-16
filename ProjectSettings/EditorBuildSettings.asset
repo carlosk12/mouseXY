@@ -38,6 +38,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/EndScene.unity
     guid: bc64b2a375510d34eb210a8c9c41e00f
-  - enabled: 1
-    path: Assets/_Scenes/TutorialScene.unity
-    guid: 40cc35d049ce9d74b96f16ad2a6ed02c
