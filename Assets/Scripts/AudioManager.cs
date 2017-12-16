@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour {
 	void Start()
 	{
 		Debug.Log("playMusic");
-		Play("menuMusic");
+		//Play("menuMusic");
 	}
 
 	public void Play (string name)

@@ -48,16 +48,6 @@ public class GameController : MonoBehaviour {
     {
         level++;
 		//Debug.Log(level);
-		if (level == 0)
-		{
-			FindObjectOfType<AudioManager>().Stop("menuMusic");
-			FindObjectOfType<AudioManager>().Play("menuMusic");
-		}
-		if (level > 1)
-		{
-			Debug.Log("kássa");
-			FindObjectOfType<AudioManager>().Stop("menuMusic");
-		}
 		
         //load.levelMap = maps[level];
         

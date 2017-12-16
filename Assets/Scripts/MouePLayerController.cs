@@ -79,7 +79,7 @@ public class MouePLayerController : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MainMenu");
+			SceneManager.LoadScene("MainMenu");
         }
 
 		/**
