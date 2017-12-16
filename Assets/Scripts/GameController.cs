@@ -42,12 +42,19 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Debug.Log(level);
 	}
 
     public void GetNextLevel()
     {
         level++;
+		//Debug.Log(level);
+		if (level > 1)
+		{
+			Debug.Log("kássa");
+			FindObjectOfType<AudioManager>().Stop("menuMusic");
+		}
+		
         //load.levelMap = maps[level];
         
         SceneManager.LoadScene(scenePaths[level], LoadSceneMode.Single);
