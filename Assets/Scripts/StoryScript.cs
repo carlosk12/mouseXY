@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StoryScript : MonoBehaviour {
 
     public Text Continue;
+
 	// Use this for initialization
 	void Start () {
         StartCoroutine(Appear());
@@ -21,10 +23,7 @@ public class StoryScript : MonoBehaviour {
 
     IEnumerator Appear()
     {
-
         yield return new WaitForSeconds(3);
         Continue.gameObject.SetActive(true);
-
-
     }
 }
