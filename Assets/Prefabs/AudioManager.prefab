@@ -102,7 +102,7 @@ MonoBehaviour:
     loop: 0
   - name: mouseDeath
     clip: {fileID: 8300000, guid: d0c3d59b4c5c67d4a92643d93b1e0590, type: 3}
-    volume: 0.025
+    volume: 0.05
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: 'menuMusic '
+  - name: menuMusic
     clip: {fileID: 8300000, guid: d8eac504c618c5344b77cb52c38b789d, type: 3}
     volume: 0.639
     pitch: 1
