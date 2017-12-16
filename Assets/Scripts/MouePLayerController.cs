@@ -16,6 +16,7 @@ public class MouePLayerController : MonoBehaviour {
 	private bool facingUp = false;
 	private AudioManager audio;
     private mouseSprite mouseSp;
+    private int collisionID = 1;
 
 	// indicates what direction the gravity is pulling
 	private bool gravityRight = false;
@@ -67,6 +68,7 @@ public class MouePLayerController : MonoBehaviour {
 
 	void Update()
 	{
+        //Debug.Log("FacingUp: " + facingUp);
 
 		if (Input.GetKeyDown(KeyCode.Space) && !inAir)
 		{
@@ -84,8 +86,11 @@ public class MouePLayerController : MonoBehaviour {
 		{
 
 			Physics2D.gravity = new Vector2(-9.81F, 0);
-			transform.GetChild(1).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, 1, 1);
+
+            mouseSp.transform.localRotation = transform.GetChild(1).gameObject.transform.localRotation;
+
+            transform.GetChild(1).gameObject.SetActive(true);
+            //transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, 1, 1);
             transform.GetChild(2).gameObject.SetActive(false);
 
 			transform.GetChild(3).gameObject.SetActive(false);
@@ -96,7 +101,7 @@ public class MouePLayerController : MonoBehaviour {
 			isUpOrDown = false;
 			normal = Vector2.right;
 
-			if (!facingRight)
+			if (facingRight)
 			{
 				flipPlayerX();
 			}
@@ -113,9 +118,11 @@ public class MouePLayerController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			Physics2D.gravity = new Vector2(0, -9.81F);
-			transform.GetChild(1).gameObject.SetActive(false);
+
+            mouseSp.transform.localRotation = transform.GetChild(2).gameObject.transform.localRotation;
+
+            transform.GetChild(1).gameObject.SetActive(false);
 			transform.GetChild(2).gameObject.SetActive(true);
-            //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, 1, 1);
 
             transform.GetChild(3).gameObject.SetActive(false);
 			transform.GetChild(4).gameObject.SetActive(true);
@@ -141,10 +148,9 @@ public class MouePLayerController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			Physics2D.gravity = new Vector2(0, 9.81F);
-			transform.GetChild(1).gameObject.SetActive(false);
+            mouseSp.transform.localRotation = transform.GetChild(2).gameObject.transform.localRotation;
+            transform.GetChild(1).gameObject.SetActive(false);
 			transform.GetChild(2).gameObject.SetActive(true);
-            //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, -1, 1);
-
             transform.GetChild(3).gameObject.SetActive(true);
 			transform.GetChild(4).gameObject.SetActive(false);
 			transform.GetChild(5).gameObject.SetActive(false);
@@ -152,7 +158,7 @@ public class MouePLayerController : MonoBehaviour {
 			normal = Vector2.down;
 			isUpOrDown = true;
 
-			if (facingUp)
+			if (!facingUp)
 			{
 				flipPlayerY();
 			}
@@ -169,8 +175,10 @@ public class MouePLayerController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			Physics2D.gravity = new Vector2(9.81F, 0);
-			transform.GetChild(1).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, -1, 1);
+
+            mouseSp.transform.localRotation = transform.GetChild(1).gameObject.transform.localRotation;
+
+            transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(false);
 
 			transform.GetChild(3).gameObject.SetActive(false);
@@ -210,31 +218,31 @@ public class MouePLayerController : MonoBehaviour {
 		{
 
             flipPlayerX();
-            if(facingUp)
-            {
-                Debug.Log("Vinstri Niður");
-                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-            {
-                Debug.Log("Vinstri Upp");
-                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, -1, 1);
-            }
+            //if(facingUp)
+            //{
+            //    Debug.Log("Vinstri Upp");
+            //    //transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, 1, 1);
+            //}
+            //else
+            //{
+            //    Debug.Log("Vinstri Niður");
+            //    transform.GetChild(2).gameObject.transform.localScale = new Vector3(1, 1, 1);
+            //}
             
         }
 		else if (moveHor > 0 && facingRight == false)
 		{
 			flipPlayerX();
-            if (facingUp)
-            {
-                Debug.Log("Hægri Niður");
-                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else
-            {
-                Debug.Log("Vinstri Upp");
-                //transform.GetChild(2).gameObject.transform.localScale = new Vector3(-1, -1, 1);
-            }
+            //if (facingUp)
+            //{
+            //    Debug.Log("Hægri Upp");
+            //    //transform.GetChild(2).gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            //}
+            //else
+            //{
+            //    Debug.Log("Hægri Niður");
+            //    transform.GetChild(2).gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            //}
         }
 
         if (inAir)
@@ -259,21 +267,23 @@ public class MouePLayerController : MonoBehaviour {
 
 		if (moveVer < 0 && facingUp == false)
 		{
-			flipPlayerY();
+            Debug.Log("Bla");
+			flipPlayerX();
 
-            transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, 1, 1);
+            //transform.GetChild(1).gameObject.transform.localScale = new Vector3(1, 1, 1);
             //mouseSp.anim.enabled = true;
         }
 		else if (moveVer > 0 && facingUp == true)
 		{
-			flipPlayerY();
-            transform.GetChild(1).gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            Debug.Log("Meira Bla");
+            flipPlayerX();
+            //transform.GetChild(1).gameObject.transform.localScale = new Vector3(-1, 1, 1);
             //mouseSp.anim.enabled = true;
         }
-        else if (moveHor == 0 && moveVer == 0)
-        {
-            //mouseSp.anim.enabled = false;
-        }
+        //else if (moveHor == 0 && moveVer == 0)
+        //{
+        //    //mouseSp.anim.enabled = false;
+        //}
 
         if (inAir)
 		{
@@ -293,19 +303,46 @@ public class MouePLayerController : MonoBehaviour {
 
 	void flipPlayerX()
 	{
-        //GetComponentInChildren<mouseSprite>().flipPlayerX();
-        mouseSp.flipPlayerX();
+        //if(isUpOrDown)
+        
+        GetComponentInChildren<mouseSprite>().flipPlayerX();
 
-		facingRight = !facingRight;
+        //mouseSp.flipPlayerX();
+
+        if (gravityUp || gravityDown)
+        {
+            collisionID = 2;
+        }
+        else
+        {
+            collisionID = 1;
+        }
+
+        transform.GetChild(collisionID).gameObject.transform.localScale = new Vector3(  transform.GetChild(collisionID).gameObject.transform.localScale.x * (-1),
+                                                                                        transform.GetChild(collisionID).gameObject.transform.localScale.y,
+                                                                                        transform.GetChild(collisionID).gameObject.transform.localScale.z);
+        facingRight = !facingRight;
 	}
 
 	void flipPlayerY()
 	{
-        //GetComponentInChildren<mouseSprite>().flipPlayerY();
-        mouseSp.flipPlayerY();
+        GetComponentInChildren<mouseSprite>().flipPlayerY();
 
-		facingUp = !facingUp;
-	}
+        if (gravityUp || gravityDown)
+        {
+            collisionID = 2;
+        }
+        else
+        {
+            collisionID = 1;
+        }
+
+        transform.GetChild(collisionID).gameObject.transform.localScale = new Vector3(  transform.GetChild(collisionID).gameObject.transform.localScale.x,
+                                                                                        transform.GetChild(collisionID).gameObject.transform.localScale.y * (-1),
+                                                                                        transform.GetChild(collisionID).gameObject.transform.localScale.z);
+
+        facingUp = !facingUp;
+    }
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
