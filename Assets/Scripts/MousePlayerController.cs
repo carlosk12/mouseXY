@@ -61,6 +61,11 @@ public class MousePlayerController : MonoBehaviour {
             jump = true;
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
         /**
          * A = Gravity pulls you towards the left
          * S = Gravity pulls you towards the bottom
