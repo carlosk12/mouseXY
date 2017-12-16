@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndStory : MonoBehaviour {
 
     public Text Continue;
+    GameController gameCon;
 
     // Use this for initialization
     void Start()
     {
         StartCoroutine(Appear());
+        gameCon = GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -18,7 +21,7 @@ public class EndStory : MonoBehaviour {
     {
         if (Input.anyKey)
         {
-            GameController.i.ChangeIndexAndLoad(-1);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
