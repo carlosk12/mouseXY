@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDelay: 2
   scenePaths:
+  - MainMenu
+  - TheStory
   - Level1
   - Level2
   - Level3
