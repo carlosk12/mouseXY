@@ -17,6 +17,7 @@ public class DropdownScript : MonoBehaviour {
         dd = GameObject.Find("Dropdown").GetComponent<Dropdown>();
         gameCon = GameObject.FindObjectOfType<GameController>();
         dropdownItems = gameCon.scenePaths.ToList();
+        dropdownItems[0] = "Select a level";
         populateDropdown();
         Time.timeScale = 1;
     }
@@ -40,6 +41,9 @@ public class DropdownScript : MonoBehaviour {
 
     public void submitClicked()
     {
-        gameCon.ChangeIndexAndLoad(picked);
+        if (picked != 0)
+        {
+            gameCon.ChangeIndexAndLoad(picked);
+        }
     }
 }
