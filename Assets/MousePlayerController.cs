@@ -81,15 +81,16 @@ public class MousePlayerController : MonoBehaviour {
             transform.GetChild(5).gameObject.SetActive(false);  //Left
             transform.GetChild(6).gameObject.SetActive(false);  //Right
 
-            gravityRight = false;
-            gravityUp = false;
-            gravityDown = true;
-            gravityLeft = false;
 
             if (!gravityDown)
             {
                 audio.Play("gravityUpDown");
             }
+
+            gravityRight = false;
+            gravityUp = false;
+            gravityDown = true;
+            gravityLeft = false;
 
             feetUp = false;
             //facingRight = false;
@@ -116,15 +117,16 @@ public class MousePlayerController : MonoBehaviour {
             transform.GetChild(5).gameObject.SetActive(false);  //Left
             transform.GetChild(6).gameObject.SetActive(false);  //Right
 
-            gravityRight = false;
-            gravityUp = true;
-            gravityDown = false;
-            gravityLeft = false;
 
             if (!gravityUp)
             {
                 audio.Play("gravityUpDown");
             }
+
+            gravityRight = false;
+            gravityUp = true;
+            gravityDown = false;
+            gravityLeft = false;
 
             feetUp = true;
             //facingRight = false;
@@ -151,15 +153,16 @@ public class MousePlayerController : MonoBehaviour {
             transform.GetChild(5).gameObject.SetActive(true);  //Left
             transform.GetChild(6).gameObject.SetActive(false);  //Right
 
-            gravityRight = false;
-            gravityUp = false;
-            gravityDown = false;
-            gravityLeft = true;
 
             if (!gravityLeft)
             {
                 audio.Play("gravityLeftRight");
             }
+
+            gravityRight = false;
+            gravityUp = false;
+            gravityDown = false;
+            gravityLeft = true;
 
             feetUp = false;
             facingRight = false;
@@ -186,15 +189,16 @@ public class MousePlayerController : MonoBehaviour {
             transform.GetChild(5).gameObject.SetActive(false);  //Left
             transform.GetChild(6).gameObject.SetActive(true);  //Right
 
-            gravityRight = true;
-            gravityUp = false;
-            gravityDown = false;
-            gravityLeft = false;
 
             if (!gravityRight)
             {
                 audio.Play("gravityLeftRight");
             }
+
+            gravityRight = true;
+            gravityUp = false;
+            gravityDown = false;
+            gravityLeft = false;
 
             feetUp = false;
             facingRight = false;
